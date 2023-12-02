@@ -1,0 +1,63 @@
+User
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <title>Mapbox Customized Map Design</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <!-- Including the Mapbox GL CSS file -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css" rel="stylesheet">
+
+    <!-- Including the Mapbox GL JS file -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
+
+    <style>
+        /* CSS styles for the body */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* CSS styles for the container */
+        #container {
+            display: flex;
+            height: 50vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* CSS styles for the map */
+        #map {
+            width: 80%; /* Adjust the width as needed */
+            height: 80%; /* Adjust the height as needed */
+            margin: auto; /* Center the map within the container */
+        }
+    </style>
+</head>
+
+<body>
+    <main id="container">
+
+        <div id="map"></div>
+
+    </main>
+    <script>
+        // Initialize the Mapbox access token
+        mapboxgl.accessToken =
+            'pk.eyJ1IjoiZmdvbnphMiIsImEiOiJjbG9vdWFjcHIwMG5kMmpvMXN5aWkwZXc4In0.GWMxQgk8OVnVI8DwIGcw_w';
+
+        // Create the map object
+        let map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/mapbox/streets-v12', // style URL
+            zoom: 11.5, // starting zoom
+            center: [-122.4194, 37.7749] // starting center
+        });
+
+    </script>
+
+</body>
+
+</html>
