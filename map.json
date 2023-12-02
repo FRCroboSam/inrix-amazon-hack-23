@@ -1,0 +1,26 @@
+{
+    "mapboxAccessToken": "pk.eyJ1IjoiZmdvbnphMiIsImEiOiJjbG9vdWFjcHIwMG5kMmpvMXN5aWkwZXc4In0.GWMxQgk8OVnVI8DwIGcw_w",
+    "mapSettings": {
+      "container": "map",
+      "style": "mapbox://styles/mapbox/streets-v12",
+      "zoom": 11.5,
+      "center": [-122.4194, 37.7749]
+    },
+    "cssStyles": {
+      "body": {
+        "margin": 0,
+        "padding": 0
+      },
+      "container": {
+        "display": "flex",
+        "height": "50vh",
+        "justifyContent": "center",
+        "alignItems": "center"
+      },
+      "map": {
+        "width": "80%",
+        "height": "80%",
+        "margin": "auto"
+      }
+    }
+  }
