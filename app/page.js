@@ -3,7 +3,7 @@ import MyMap from './components/map'
 import React, { useState, useEffect } from 'react';
 import Sidebar from './components/sidebar.jsx';
 import MapSwitchButton from './components/mapSwitchButton';
-
+import Chatbot from './components/chat';
 export default function Home() {
   const [point1, setPoint1] = useState([
     [0.00, 0.00],
@@ -23,37 +23,27 @@ export default function Home() {
   useEffect(() => {
     fetchData();
   }, []);
+  var msg = new SpeechSynthesisUtterance("Speak Something")
+
 
   const fetchData = async () => {
-    try {
-      const response = await fetch("http://localhost:3001/findRoute");
-      const result = await response.json();
+    const msg = new SpeechSynthesisUtterance();
+    msg.text = "Hiya";
+    window.speechSynthesis.speak(msg);
 
-      const wayPoint1 = result.json2.result.trip.wayPoints[0].geometry.coordinates[0];
+  //   try {
+  //     const response = await fetch("http://localhost:3001/findRoute");
+  //     const result = await response.json();
+  //     const routeSummary = result.json2.result.trip.routes[0].summary.text; 
+  //     alert(routeSummary)
+  //     msg.text = routeSummary.trim();
+  //     window.speechSynthesis.speak(msg);
 
-      setPoint1([
-        
-        [37.77309957872636,-122.41037895366077],
-        [37.77387109653664, -122.40859446108898]
-                
-      ]);
-
-      setPoint2([
-        [37.77387109653664, -122.40859446108898],
-        [37.77498722076416, -122.41162061691284],
-      ]);
-
-      // setPoint3([
-      //   [37.77387109653664, -122.40859446108898],
-      //   [37.771857191904395, -122.40527743878388],
-      // ]);
-
-      console.log("WAYPOINT 1: " + wayPoint1);
-      alert(wayPoint1);
-    } catch (error) {
-      alert("meep", error);
-      console.error("Error fetching data:", error);
-    }
+  //   } catch (error) {
+  //     window.speechSynthesis.speak("COULDNT FETCH DATA");
+  //     alert("meep", error);
+  //     console.error("Error fetching data:", error);
+  //   }
   };
 
   return (
@@ -61,10 +51,14 @@ export default function Home() {
       <MyMap point1={point1} point2={point2} point3={point3} />
 
       
-    <Sidebar/>
-    <div style={{ position: 'absolute', top: 50, right: 50, zIndex: 1000 }}>
+      <Sidebar/>
+      <div style={{ position: 'absolute', top: 50, right: 50, zIndex: 1000 }}>
           <MapSwitchButton />
-        </div>
+      </div>
+      <div style={{ position: 'absolute', top: 200, right: 50, zIndex: 3000 }}>
+        <Chatbot />
+      </div>
     </div>
+    
   );
 }
