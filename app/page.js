@@ -1,5 +1,5 @@
 "use client";
-import MyMap from "./components/map";
+import MyMap from './components/map'
 import React, { useState, useEffect } from 'react';
 import Sidebar from './components/sidebar.jsx';
 
@@ -31,19 +31,21 @@ export default function Home() {
       const wayPoint1 = result.json2.result.trip.wayPoints[0].geometry.coordinates[0];
 
       setPoint1([
-        [37.7749, -122.4194],
-        [38.0648, -122.3194],
+        
+        [37.77309957872636,-122.41037895366077],
+        [37.77387109653664, -122.40859446108898]
+                
       ]);
 
       setPoint2([
-        [37.7749, -122.4194],
-        [38.1648, -122.5194],
+        [37.77387109653664, -122.40859446108898],
+        [37.77498722076416, -122.41162061691284],
       ]);
 
-      setPoint3([
-        [37.7749, -122.4194],
-        [38.2648, -122.4194],
-      ]);
+      // setPoint3([
+      //   [37.77387109653664, -122.40859446108898],
+      //   [37.771857191904395, -122.40527743878388],
+      // ]);
 
       console.log("WAYPOINT 1: " + wayPoint1);
       alert(wayPoint1);
@@ -54,11 +56,16 @@ export default function Home() {
   };
 
   return (
-    <div className="h-full bg-white h-screen">
+    <div class="App">
+/
       <MyMap point1={point1} point2={point2} point3={point3} />
-
-      
-    <Sidebar/>
+      <Sidebar />
+      <div className="bg-gray-200 w-1/4 p-4">
+        <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+        <h2 className="text-lg font-semibold mb-4">Sidebar</h2>
+        <p>Some sidebar content...</p>
+      </div>
+      <button className="btn btn-outline">Cheap Option</button>
     </div>
   );
 }

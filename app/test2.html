@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Leaflet Map with Custom Controls, Styled Form, and Default Markers
+    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Leaflet and CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+
+    <style>
+      /* CSS for the map*/
+      #mapid {
+        width: 100%;
+        height: 100vh;
+      }
+      /* CSS for the form thing on the right*/
+      #formContainer {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 2000;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        border-color: red;
+        overflow: hidden;
+        font-family: "Arial", sans-serif;
+        width: 300px; /* Set a specific width */
+      }
+
+      .option {
+        display: block;
+        background: linear-gradient(135deg, #f6f8f9 0%, #e5ebee 100%);
+        margin: 10px;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease-in-out;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .custom-radio {
+        position: absolute;
+        top: 50%;
+        left: 20px;
+        transform: translateY(-50%);
+        height: 20px;
+        width: 20px;
+        background: white;
+        border: 2px solid #d1d3d4;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      .custom-radio::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #58595b;
+        transition: transform 0.2s ease;
+      }
+
+      input[type="radio"] {
+        display: none;
+      }
+
+      input[type="radio"]:checked + .custom-radio::after {
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      .option span {
+        margin-left: 50px;
+        font-size: 16px;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mapid"></div>
+
+    <div id="formContainer">
+      <!-- Your form content -->
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <script>
+      var map = L.map("mapid").setView([37.778724, -122.41], 13);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "© OpenStreetMap contributors",
+      }).addTo(map);
+
+      // Add three default markers for different locations
+      L.marker([37.77309957872636, -122.41037895366077])
+        .addTo(map)
+        .bindPopup("Beginning");
+
+      L.marker([37.771857191904395, -122.40527743878388])
+        .addTo(map)
+        .bindPopup("Gas Station");
+
+      L.marker([37.77106037394281, -122.41087994848712])
+        .addTo(map)
+        .bindPopup("End");
+    </script>
+  </body>
+</html>
