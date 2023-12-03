@@ -13,7 +13,8 @@ export default function Home() {
         <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
         <h2 class="text-lg font-semibold mb-4">Sidebar</h2>
         <p>Some sidebar content...</p>
-    </div>
+      </div>
+      <button className="btn btn-outline">Cheap Option</button>
     </div>
   );
 }
