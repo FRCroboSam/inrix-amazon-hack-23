@@ -20,7 +20,7 @@ export default function Sidebar() {
         <p>Destination:</p>
         <input
           type="text"
-          placeholder="Type here"
+          placeholder="Search destination..."
           className="input input-bordered w-full max-w-xs bg-white"
         />
 
@@ -28,7 +28,7 @@ export default function Sidebar() {
           <p>to</p>
           <input
             type="text"
-            placeholder="Type here"
+            placeholder="Search destination..."
             className="input input-bordered w-full max-w-xs bg-white"
           />
           <p className="pt-4">Gas Price Range</p>
