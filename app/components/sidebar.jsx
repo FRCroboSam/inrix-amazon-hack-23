@@ -1,19 +1,50 @@
-export default function Sidebar(){
-<div class="drawer lg:drawer-open">
-  <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-  <div class="drawer-content flex flex-col items-center justify-center">
+import React, { useState } from 'react';
 
-    <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">Open drawer</label>
-  
-  </div> 
-  <div class="drawer-side">
-    <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label> 
-    <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+export default function Sidebar() {
+  const [rangeValue, setRangeValue] = useState(5);
 
-      <li><a>Sidebar Item 1</a></li>
-      <li><a>Sidebar Item 2</a></li>
-    </ul>
-  
-  </div>
-</div>
+  const handleRangeChange = (event) => {
+    setRangeValue(event.target.value);
+  };
+
+  return (
+    <div className="drawer bg-white">
+      <input id="my-drawer-2" type="checkbox" className="drawer-toggle bg-white" />
+      <div className="drawer-content flex flex-col items-center justify-center bg-white">
+        <label htmlFor="my-drawer-2" className="btn btn-primary bg-white drawer-button lg:hidden">
+          Open drawer
+        </label>
+      </div>
+
+      <div className="bg-white p-7 text-black font-bold">
+        <p>Destination:</p>
+        <input
+          type="text"
+          placeholder="Type here"
+          className="input input-bordered w-full max-w-xs bg-white"
+        />
+
+        <div>
+          <p>to</p>
+          <input
+            type="text"
+            placeholder="Type here"
+            className="input input-bordered w-full max-w-xs bg-white"
+          />
+          <p className="pt-4">Gas Price Range</p>
+          <input
+            id="minmax-range"
+            type="range"
+            min="0"
+            max="100"
+            value={rangeValue}
+            onChange={handleRangeChange}
+            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer bg-white border border-gray-400"
+          />
+          <p>${rangeValue}</p>
+        </div>
+        <button className="btn btn-outline">Cheap Option</button>
+      </div>
+    </div>
+  );
 }
