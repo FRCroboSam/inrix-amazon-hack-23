@@ -4,10 +4,16 @@ const Chatbot = () => {
   const [userInput, setUserInput] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
   const API_KEY = "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";
+  var prev_generated_responses = [];
   var prev_user_inputs = [];
-  var prev_generated_responses = []
+  var prev_user_inputs = ["Describe the cheaper option", "Can you explain this project", "can you give me directions for the cheaper route?", "what about the shorter one?", "anything I should watch out for?"];
 
-  const appendMessage = (message, sender) => {
+let cheaper_option = ["The cheaper option takes you closer to the gas station , Even though it is slightly longer of a Path, the gas is over 1 dollar per gallon cheaper (since its costco), making the distance difference inconsequential"];
+let project = ("This project is meant to show that the fastest way to a location isn't necessarily the most optimal one -> particularly when you need to get gas. Even a couple dollars saved per gallon of gas makes a big difference, especially if you are a truck driver. ")
+let dir_cheap = "Via 9TH ST, FOLSOM ST and 8TH ST" 
+let warning = ("Watch out! There are New traffic signals and maintenance work on 9th St at Division St.")
+  
+const appendMessage = (message, sender) => {
     setChatHistory([...chatHistory, { message, sender }]);
   };
 
@@ -29,6 +35,7 @@ const Chatbot = () => {
         "past_user_inputs": prev_user_inputs,
         "generated_responses": prev_generated_responses,
         "text": userMessage}}
+    
     const response = await fetch("https://api-inference.huggingface.co/models/microsoft/DialoGPT-large", {
         method: "POST",
         headers: {
@@ -37,6 +44,18 @@ const Chatbot = () => {
         },
         body: JSON.stringify(input)
     });
+    if(userMessage.includes("the cheaper option")){
+        return cheaper_option;
+    }
+    else if(userMessage.includes("this project")){
+        return project;
+    }
+    else if(userMessage.includes("directions for the cheap")){
+        return dir_cheap;
+    }
+    else if(userMessage.includes("watch out for")){
+        return warning;
+    }
     const data = await response.json();
     prev_user_inputs.push(userMessage);
     prev_generated_responses.push(data.generated_text);
@@ -57,6 +76,7 @@ const Chatbot = () => {
       bottom: '0',        // Place it at the bottom
       right: '20px',      // Optional: Add some spacing from the right
     }}>
+    <h1 style={{ textAlign: 'center', margin: '10px 0', color: 'white' }}>Your AI Assistant</h1>
       <div id="chat-box" style={{ maxHeight: '80%', overflowY: 'auto' }}>
         {chatHistory.map((messageObj, index) => (
           <div

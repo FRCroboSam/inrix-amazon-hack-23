@@ -34,7 +34,6 @@ const createRoutineMachineLayer = (props) => {
 
 
 
-alert("CREATING A ROUTING MACHINE");
 const RoutingMachine = createControlComponent(createRoutineMachineLayer);
 
 export default RoutingMachine;
@@ -51,6 +50,7 @@ export function setCheap2(){
       L.latLng(wayPointsGas[2][0], wayPointsGas[2][1]),
 
     ]);
+
   }
 }
 export function setShort2(){

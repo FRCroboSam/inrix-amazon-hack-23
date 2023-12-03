@@ -71,9 +71,9 @@ var msg = new SpeechSynthesisUtterance("Speak Something")
       <Sidebar handleData={handleUpdateData} />
       <div className="bg-gray-200 w-1/4 p-4">
       </div>
-      {/*<div style={{ position: 'absolute', top: 200, right: 50, zIndex: 3000 }}>
+      <div style={{ position: 'absolute', top: 200, right: 50, zIndex: 3000 }}>
         <Chatbot />
-  </div>*/}
+    </div>
     </div>
 
   );

@@ -21,11 +21,9 @@ const Sidebar = ({ handleData }) => {
  
 
   function getWayPointGas(){
-    alert("way point is gas")
     handleAction(wayPointsGas, true);
   }
   function setWayPointShort(){
-    alert("way point is short")
     handleAction(wayPointsShortest, false);
   }
 
