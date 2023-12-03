@@ -24,7 +24,7 @@ export default function MyMap() {
   ];
 
   const puprpleOptions = {color: 'purple'}
-  return (<MapContainer center={position} zoom={zoom} scrollWheelZoom={false} style={{ height: '100vh', width: '100%', position: 'absolute', top: 0, left: 0 }}>
+  return (<MapContainer center={position} zoom={zoom} scrollWheelZoom={false} style={{ height: '100vh', width: '100%', position: 'absolute', top: 0, left: 250 }}>
     <TileLayer
       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
