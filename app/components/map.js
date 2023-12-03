@@ -44,7 +44,7 @@ export default function MyMap({ point1, point2, point3 }) {
     return (
       <MapContainer
         center={position} 
-        zoom={15} 
+        zoom={16} 
         scrollWheelZoom={false} 
         style={{ height: '100vh', width: '100%', position: 'absolute', top: 0, left: 250 }}
       >

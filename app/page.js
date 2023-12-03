@@ -2,6 +2,7 @@
 import MyMap from './components/map'
 import React, { useState, useEffect } from 'react';
 import Sidebar from './components/sidebar.jsx';
+import MapSwitchButton from './components/mapSwitchButton';
 
 export default function Home() {
   const [point1, setPoint1] = useState([
@@ -56,16 +57,14 @@ export default function Home() {
   };
 
   return (
-    <div class="App">
-/
+    <div className="h-full bg-white h-screen">
       <MyMap point1={point1} point2={point2} point3={point3} />
-      <Sidebar />
-      <div className="bg-gray-200 w-1/4 p-4">
-        <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
-        <h2 className="text-lg font-semibold mb-4">Sidebar</h2>
-        <p>Some sidebar content...</p>
-      </div>
-      <button className="btn btn-outline">Cheap Option</button>
+
+      
+    <Sidebar/>
+    <div style={{ position: 'absolute', top: 50, right: 50, zIndex: 1000 }}>
+          <MapSwitchButton />
+        </div>
     </div>
   );
 }
