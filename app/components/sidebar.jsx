@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
-import {getWayPointsGas, getWayPointShort} from '../components/RoutingMachine'
+import {getWayPointsGas, getWayPointShort, setShort2} from '../components/RoutingMachine'
 import {wayPointsShortest, wayPointsGas} from '../components/constant.js'
+
 
 //export default function
 const Sidebar = ({ handleData }) => {
-  const [rangeValue, setRangeValue] = useState(5);
+  const [rangeValue, setRangeValue] = useState(0);
   const handleRangeChange = (event) => {
     setRangeValue(event.target.value);
   };
-
+ 
   // Function to handle some action and update shared data
   const handleAction = (currentRoute, isGas) => {
     handleData(currentRoute, isGas); // Update shared data in the parent
   };
-
+  if(rangeValue > 50){
+    handleAction(wayPointsShortest, false);
+    setShort2
+  }
+ 
 
   function getWayPointGas(){
     alert("way point is gas")
@@ -48,6 +53,7 @@ const Sidebar = ({ handleData }) => {
             placeholder="Search destination..."
             className="input input-bordered w-full max-w-xs bg-white"
           />
+
           <p className="pt-4">Gas Price Range</p>
           <input
             id="minmax-range"
@@ -60,10 +66,13 @@ const Sidebar = ({ handleData }) => {
           />
           <p>${rangeValue}</p>
         </div>
+
         <button className="btn btn-outline" onClick={getWayPointGas} >Cheap Option</button>
         <button className="btn btn-outline" onClick={setWayPointShort} >Quick Option</button>
       </div>
     </div>
+    
   );
 };
+
 export default Sidebar;

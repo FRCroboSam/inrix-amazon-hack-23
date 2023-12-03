@@ -41,7 +41,7 @@ export default RoutingMachine;
 
 export function setCheap2(){
   if(routingMachine != null){
-    alert("Setting Cheap2")
+    //alert("Setting Cheap2")
     const newWaypoint = instance.getWaypoints()[0].latLng;
     const newLat = newWaypoint.lat + 0.01;
     const newLng = newWaypoint.lng + 0.01;
@@ -56,7 +56,7 @@ export function setCheap2(){
 export function setShort2(){
 
   if(routingMachine != null){
-    alert("Setting Short2")
+    //alert("Setting Short2")
 
     const newWaypoint = instance.getWaypoints()[0].latLng;
     const newLat = newWaypoint.lat + 0.01;
