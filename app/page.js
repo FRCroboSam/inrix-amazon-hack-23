@@ -4,6 +4,9 @@ import React, { useState, useEffect } from 'react';
 import Sidebar from './components/sidebar.jsx';
 import MapSwitchButton from './components/mapSwitchButton';
 import Chatbot from './components/chat';
+import { wayPointsGas } from './components/constant';
+import { setCheap, setShort } from "./components/map";
+
 export default function Home() {
   const [point1, setPoint1] = useState([
     [0.00, 0.00],
@@ -19,6 +22,7 @@ export default function Home() {
     [0.00, 0.00],
     [0.00, 0.00],
   ]);
+
 
   useEffect(() => {
     fetchData();
@@ -46,14 +50,26 @@ export default function Home() {
   //   }
   };
 
-  return (
-    <div className="h-full bg-white h-screen">
-      <MyMap point1={point1} point2={point2} point3={point3} />
+  const [route, setRoute] = useState(wayPointsGas);
 
-      
-      <Sidebar/>
-      <div style={{ position: 'absolute', top: 50, right: 50, zIndex: 1000 }}>
-          <MapSwitchButton />
+  // Handler to update shared data
+  const handleUpdateData = (newData, isGas) => {
+    console.log(newData)
+    setRoute(newData);
+    if(isGas){
+      setCheap()
+    }
+    else{
+      setShort()
+    }
+  };
+
+  return (
+    <div class="App">
+/
+      <MyMap point1={point1} point2={point2} point3={point3} route={route} />
+      <Sidebar handleData={handleUpdateData} />
+      <div className="bg-gray-200 w-1/4 p-4">
       </div>
       <div style={{ position: 'absolute', top: 200, right: 50, zIndex: 3000 }}>
         <Chatbot />

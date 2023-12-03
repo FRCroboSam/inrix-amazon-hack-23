@@ -1,16 +1,26 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { MapContainer, Marker, TileLayer, Tooltip, Popup, Polyline } from "react-leaflet"
 import 'leaflet/dist/leaflet.css';
-import RoutingMachine from './RoutingMachine';
+import RoutingMachine, { setCheap2, setShort2 } from './RoutingMachine';
+export function setCheap(){
+  setCheap2(); 
+}
 
-export default function MyMap({ point1, point2, point3 }) {
+export function setShort(){
+    setShort2();
+}
+
+export default function MyMap({ point1, point2, point3, route }) {
   const position = [37.77309957872636, -122.41037895366077]
   const zoom = 10
   const polyline1 = point1; 
   const polyline2 = point2; 
   const polyline3 = point3; 
+  const theRoute = route;
+  
+  console.log(route);
   // const polyline1 = [
   //   [37.7749, -122.4194],
   //   [38.0648, -122.3194],
@@ -52,7 +62,7 @@ export default function MyMap({ point1, point2, point3 }) {
           url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}"
           attribution="Tiles &copy; Esri &mdash; Sources: GEBCO, NOAA, CHS, OSU, UNH, CSUMB, National Geographic, DeLorme, NAVTEQ, and Esri"
         />
-        <RoutingMachine />
+        <RoutingMachine route={theRoute} />
       </MapContainer>
     );
 }
