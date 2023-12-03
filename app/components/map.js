@@ -66,14 +66,6 @@ export default function MyMap({ point1, point2, point3, route }) {
           attribution="Tiles &copy; Esri &mdash; Sources: GEBCO, NOAA, CHS, OSU, UNH, CSUMB, National Geographic, DeLorme, NAVTEQ, and Esri"
         />
 
-      <Marker position={wayPointsShortest[0]}>
-        <Popup>
-          <div>
-            <h3>Gas Station</h3>
-            <p>$5.40/Regular</p>
-          </div>
-        </Popup>
-      </Marker>
       <Marker position={wayPointsShortest[1]}>
         <Popup>
           <div>
@@ -87,14 +79,6 @@ export default function MyMap({ point1, point2, point3, route }) {
           <div>
             <h3>Gas Station</h3>
             <p>$5.40/Regular</p>
-          </div>
-        </Popup>
-      </Marker>
-      <Marker position={wayPointsGas[0]}>
-        <Popup>
-          <div>
-            <h3>Gas Station</h3>
-            <p>$4.50/Regular</p>
           </div>
         </Popup>
       </Marker>
