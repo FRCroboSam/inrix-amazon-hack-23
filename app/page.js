@@ -27,7 +27,7 @@ export default function Home() {
   useEffect(() => {
     fetchData();
   }, []);
-  var msg = new SpeechSynthesisUtterance("Speak Something")
+var msg = new SpeechSynthesisUtterance("Speak Something")
 
 
   const fetchData = async () => {
@@ -37,8 +37,8 @@ export default function Home() {
 
   //   try {
   //     const response = await fetch("http://localhost:3001/findRoute");
-  //     const result = await response.json();
-  //     const routeSummary = result.json2.result.trip.routes[0].summary.text; 
+      //     const result = await response.json();
+//     const routeSummary = result.json2.result.trip.routes[0].summary.text; 
   //     alert(routeSummary)
   //     msg.text = routeSummary.trim();
   //     window.speechSynthesis.speak(msg);
@@ -46,8 +46,8 @@ export default function Home() {
   //   } catch (error) {
   //     window.speechSynthesis.speak("COULDNT FETCH DATA");
   //     alert("meep", error);
-  //     console.error("Error fetching data:", error);
-  //   }
+      //     console.error("Error fetching data:", error);
+    //   }
   };
 
   const [route, setRoute] = useState(wayPointsGas);
@@ -71,10 +71,10 @@ export default function Home() {
       <Sidebar handleData={handleUpdateData} />
       <div className="bg-gray-200 w-1/4 p-4">
       </div>
-      <div style={{ position: 'absolute', top: 200, right: 50, zIndex: 3000 }}>
+      {/*<div style={{ position: 'absolute', top: 200, right: 50, zIndex: 3000 }}>
         <Chatbot />
-      </div>
+  </div>*/}
     </div>
-    
+
   );
 }

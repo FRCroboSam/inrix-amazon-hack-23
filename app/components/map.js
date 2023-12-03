@@ -4,6 +4,8 @@ import React, { useEffect } from 'react';
 import { MapContainer, Marker, TileLayer, Tooltip, Popup, Polyline } from "react-leaflet"
 import 'leaflet/dist/leaflet.css';
 import RoutingMachine, { setCheap2, setShort2 } from './RoutingMachine';
+import {wayPointsShortest, wayPointsGas} from '../components/constant.js'
+
 export function setCheap(){
   setCheap2(); 
 }
@@ -62,6 +64,56 @@ export default function MyMap({ point1, point2, point3, route }) {
           url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}"
           attribution="Tiles &copy; Esri &mdash; Sources: GEBCO, NOAA, CHS, OSU, UNH, CSUMB, National Geographic, DeLorme, NAVTEQ, and Esri"
         />
+
+      <Marker position={wayPointsShortest[0]}>
+        <Popup>
+          <div>
+            <h3>Gas Station</h3>
+            <p>$5.40/Regular</p>
+          </div>
+        </Popup>
+      </Marker>
+      <Marker position={wayPointsShortest[1]}>
+        <Popup>
+          <div>
+            <h3>Gas Station</h3>
+            <p>$5.50/Regular</p>
+          </div>
+        </Popup>
+      </Marker>
+      <Marker position={wayPointsShortest[2]}>
+        <Popup>
+          <div>
+            <h3>Gas Station</h3>
+            <p>$5.40/Regular</p>
+          </div>
+        </Popup>
+      </Marker>
+      <Marker position={wayPointsGas[0]}>
+        <Popup>
+          <div>
+            <h3>Gas Station</h3>
+            <p>$4.50/Regular</p>
+          </div>
+        </Popup>
+      </Marker>
+      <Marker position={wayPointsGas[1]}>
+        <Popup>
+          <div>
+            <h3>Gas Station</h3>
+            <p>$4.40/Regular</p>
+          </div>
+        </Popup>
+      </Marker>
+      <Marker position={wayPointsGas[2]}>
+        <Popup>
+          <div>
+            <h3>Gas Station</h3>
+            <p>$4.40/Regular</p>
+          </div>
+        </Popup>
+      </Marker>
+
         <RoutingMachine route={theRoute} />
       </MapContainer>
     );
