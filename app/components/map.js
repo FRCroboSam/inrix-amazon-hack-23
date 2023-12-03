@@ -5,23 +5,26 @@ import { MapContainer, Marker, TileLayer, Tooltip, Popup, Polyline } from "react
 import 'leaflet/dist/leaflet.css';
 
 
-export default function MyMap() {
+export default function MyMap({ point1, point2, point3 }) {
   const position = [37.7749, -122.4194]
   const zoom = 10
-  const polyline1 = [
-    [37.7749, -122.4194],
-    [38.0648, -122.3194],
-  ];
+  const polyline1 = point1; 
+  const polyline2 = point2; 
+  const polyline3 = point3; 
+  // const polyline1 = [
+  //   [37.7749, -122.4194],
+  //   [38.0648, -122.3194],
+  // ];
   
-  const polyline2 = [
-    [37.7749, -122.4194],
-    [38.1648, -122.5194],
-  ];
+  // const polyline2 = [
+  //   [37.7749, -122.4194],
+  //   [38.1648, -122.5194],
+  // ];
   
-  const polyline3 = [
-    [37.7749, -122.4194],
-    [38.2648, -122.4194],
-  ];
+  // const polyline3 = [
+  //   [37.7749, -122.4194],
+  //   [38.2648, -122.4194],
+  // ];
 
   const puprpleOptions = {color: 'purple'}
   return (<MapContainer center={position} zoom={zoom} scrollWheelZoom={false} style={{ height: '100vh', width: '100%', position: 'absolute', top: 0, left: 250 }}>
